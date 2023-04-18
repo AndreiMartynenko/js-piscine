@@ -1,47 +1,93 @@
-function getarr() {
-    const arr1 = ["Hello"];
-    const arr2 = ["World"];
-    const arr3 = ["!"];
-    return allarr = arr1.concat(arr2, arr3)
+/*
+Write the body of the getArchitects function, which returns an array containing 2 arrays of HTML elements:
 
-    /*The concat() method concatenates (joins) two or more arrays.
-    The concat() method returns a new array, containing the joined arrays.
-    The concat() method does not change the existing arrays.
-    */
-}
-console.log(getAchitects())
-
-
-//DOM Document Object Model
+the first array contains the architects, all corresponding to a <a> tag
+the second array contains all the non-architects people
+ */
 
 function getArchitects() {
     let architects = document.getElementsByTagName("a");
-    let nonArchitects = document.getElementsByTagName("span");
-    let arrArchitects = Array.prototype.slice.call(architects);
-    let arrNonArchitects = Array.prototype.slice.call(nonArchitects);
-   
-    return [arrArchitects, arrNonArchitects]
+    let nonarchitects = document.getElementsByTagName("span");
+    let architectsArr = Array.prototype.slice.call(architects);
+    let nonarchitectsArr = Array.prototype.slice.call(nonarchitects);
+    return [architects], [nonarchitects];
 }
+
+/*
+Array.prototype.slice is called with the call method, 
+which allows you to invoke a function with a specified 
+this value and pass arguments to it. 
+In this case, Array.prototype.slice is called with architects 
+or nonarchitects as the this value, effectively treating them as arrays.
+ 
+Array.prototype.slice creates a new array that contains 
+all the elements of architects or nonarchitects. 
+Since slice is called with no arguments, it creates a shallow 
+copy of the original array, effectively creating a new array with the same elements.
+ 
+The resulting array is assigned to the variables architectsArr 
+and nonarchitectsArr, respectively, using the let keyword.
+ 
+After these lines of code are executed, architectsArr and 
+nonarchitectsArr will be actual arrays that contain the 
+same elements as the original HTML collections architects and 
+nonarchitects, respectively. This allows you to use standard 
+array methods, such as forEach, map, filter, etc., on these arrays
+for further processing or manipulation.
+*/
+
+
+/*
+<span> is an HTML element used to define an inline section 
+of text within a larger block of content. 
+It is a generic container element that does not carry any 
+specific semantic meaning or default styling, but it can be 
+styled using CSS to control its appearance.
+
+The <span> element is often used in conjunction with CSS to apply styles, 
+such as color, font size, or text formatting, to specific sections 
+of text within a larger HTML document. It can also be used to group together 
+multiple inline elements, such as links or images, for styling or scripting purposes.
+ */
+/*
+Write the body of the getClassical function, 
+which returns an array containing 2 arrays of HTML elements:
+
+the first array contains the architects belonging to the classical class
+the second array contains the non-classical architects
+ */
 
 function getClassical() {
     let architects = document.querySelectorAll("a.classical");
-    let nonArchitects = document.querySelectorAll("a:not(.classical)");
-    let arrArchitects = Array.prototype.slice.call(architects);
-    let arrNonArchitects = Array.prototype.slice.call(nonArchitects);
-
-    return [arrArchitects, arrNonArchitects]
+    let nonarchitects = document.querySelectorAll("a:not(.classical)");
+    let architectsArr = Array.prototype.slice.call(architects);
+    let nonarchitectsArr = Array.prototype.slice.call(nonarchitects);
+    return [architectsArr], [nonarchitectsArr];
 }
+
+/*
+Write the body of the getActive function, which returns an array containing 2 arrays of HTML elements:
+
+the first array contains the classical architects who are active in their class
+the second array contains the non-active classical architects
+ */
 
 function getActive() {
-    let ActiveClassicalArchitects = document.querySelectorAll(".classical.active")
-    let nonActiveClassicalArchitects = document.querySelectorAll(".classical:not(.active)")
-    let arrActiveClassicalArchitects = Array.prototype.slice.call(ActiveClassicalArchitects);
-    let arrNonActiveClassicalArchitects = Array.prototype.slice.call(nonActiveClassicalArchitects);
-
-    return [arrActiveClassicalArchitects, arrNonActiveClassicalArchitects]
+    let activeArchitects = document.querySelectorAll (".classical.active");
+    let nonactiveArchitects = document.querySelectorAll (".classical:not(.active)");
+    let architectsArr = Array.prototype.slice.call(activeArchitects);
+    let nonarchitectsArr = Array.prototype.slice.call(nonactiveArchitects);
+    return [activeArchitects], [nonactiveArchitects];
 }
 
-function getBonannoPiscano() {
+/*
+Write the body of the getBonannoPisano function, which returns an array containing:
+
+the HTML element of the architect you're looking for, whose id is BonannoPisano
+an array which contains all the remaining HTML elements of active classical architects
+ */
+
+function getBonannoPisano() {
     let archWithIdBonannoPiscano = document.getElementById("BonannoPisano");
     let archWithOtherId = document.getElementById("a.classical.active:not(#BonannoPisano)")
     let arrArchWithOtherId = Array.prototype.slice.call(archWithOtherId)
@@ -50,49 +96,15 @@ function getBonannoPiscano() {
 }
 
 
-/*
-The Array.prototype.slice.call() method is used to convert an 
-array-like object (such as the NodeList returned by querySelectorAll()) into a proper array.
-The slice() method of the Array prototype is called with this 
-set to the array-like object that is being converted, 
-and returns a new array that contains all the elements 
-of the original array-like object. The call() method is then 
-used to invoke the slice() method with the this value set to the array-like object.
 
-So, in the given code, the variable arrArchs is being assigned 
-the value returned by invoking slice() method on the archs 
-array-like object using the call() method. This converts the array-like 
-object archs into a proper array, which can then be manipulated 
-using the various methods available on the Array prototype.
-*/
 
-/*
-Both document.querySelectorAll and getElementsByTagName are methods 
-that allow you to access elements in the DOM 
-(Document Object Model) based on their tag name. 
-However, there are some differences between them:
 
-Use of CSS selectors:
-document.querySelectorAll allows you to use CSS selectors to 
-select elements based on their attributes, class, or ID, 
-among other criteria. For example, you can select all the 
-elements with the class "myClass" using document.querySelectorAll(".myClass").
 
-getElementsByTagName only allows you to select elements based on their tag name.
 
-Return value:
-document.querySelectorAll returns a NodeList, which is a collection of 
-nodes that match the specified CSS selector.
 
-getElementsByTagName returns an HTMLCollection, which is a collection of 
-elements that match the specified tag name.
 
-Performance:
-getElementsByTagName is generally faster than document.querySelectorAll 
-because it only looks for elements with a specific tag name, 
-whereas document.querySelectorAll has to evaluate a CSS selector.
 
-Overall, document.querySelectorAll is more versatile because 
-it allows you to select elements based on various criteria, 
-but it may be slower than getElementsByTagName for simple tag name-based selections.
-*/
+
+
+
+
