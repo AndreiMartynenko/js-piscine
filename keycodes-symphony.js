@@ -11,3 +11,6 @@ It should also display the corresponding pressed character.
 When Backspace is pressed, delete the last note.
 When Escape is pressed, clear all the notes. 
 */
+
+
+
