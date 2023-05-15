@@ -10,7 +10,7 @@ function getArchitects() {
     let nonarchitects = document.getElementsByTagName("span");
     let architectsArr = Array.prototype.slice.call(architects);
     let nonarchitectsArr = Array.prototype.slice.call(nonarchitects);
-    return [architects], [nonarchitects];
+    return [architectsArr], [nonarchitectsArr];
 }
 
 /*

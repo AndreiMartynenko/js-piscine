@@ -48,3 +48,4 @@ function destroy() {
     bricks[bricks.length - 1].remove();
 }
 export { build, repair, destroy };
+
